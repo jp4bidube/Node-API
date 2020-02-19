@@ -1,11 +1,11 @@
 module.exports = {
-  dialect: 'mysql',
-  host: 'localhost',
-  username: 'root',
-  password: 'xz2k600600',
-  database: 'sqlnode',
+  dialect: "mysql",
+  host: "localhost",
+  username: "root",
+  password: "xz2k600600",
+  database: "sqlnode",
   define: {
     timestamps: true,
-    underscored: true,
-  },
-}
+    underscored: true
+  }
+};

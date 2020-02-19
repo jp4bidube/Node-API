@@ -2,7 +2,11 @@ const Product = require("../models/Products");
 
 module.exports = {
   async listAll(req, res) {
-    const products = await Product.findAll();
+    const { page = 0, pageSize = 5 } = req.query;
+    const products = await Product.findAndCountAll({
+      limit: parseInt(pageSize),
+      offset: page * pageSize
+    });
 
     return res.json(products);
   },
