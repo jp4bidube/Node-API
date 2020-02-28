@@ -2,13 +2,19 @@ const Product = require("../models/Products");
 
 module.exports = {
   async listAll(req, res) {
-    const { page = 0, pageSize = 5 } = req.query;
+    const { page = 0, pageSize = 6 } = req.query;
     const products = await Product.findAndCountAll({
       limit: parseInt(pageSize),
       offset: page * pageSize
     });
 
-    return res.json(products);
+    let response = {
+      products: products,
+      page: parseInt(page),
+      totalPages: parseInt(products.count / pageSize)
+    };
+
+    return res.json(response);
   },
 
   async store(req, res) {
